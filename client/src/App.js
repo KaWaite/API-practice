@@ -21,6 +21,7 @@ function App() {
   // fetch data from api/express
   useEffect(() => {
     fetchItems();
+    fetchAPICall();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -28,11 +29,26 @@ function App() {
 
   const fetchItems = async () => {
     const data = await fetch("/api/test");
-    console.log(data);
+    // console.log(data);
     const Items = await data.json();
     setItems(Items);
-    console.log(Items);
+    // console.log(Items);
   };
+
+  // EXPERIMENTAL API CALL****************************
+  const [experiment, setExperiment] = useState();
+
+  const fetchAPICall = async () => {
+    const response = await fetch("/express_backend");
+    const body = await response.json();
+
+    if (response.status !== 200) {
+      throw Error(body.message);
+    }
+    setExperiment(body.express);
+  };
+
+  // ********************************************************
 
   return (
     <div className="App">
@@ -46,11 +62,12 @@ function App() {
         </form>
         <ul>
           {Items.map(item => (
-            <li>
+            <li key={item.id}>
               {item.name} Number: {item.id}
             </li>
           ))}
         </ul>
+        <p>{experiment}</p>
       </div>
     </div>
   );
