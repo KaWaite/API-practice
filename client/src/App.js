@@ -6,6 +6,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
+// import specialKey from "../../key";
+
 const useStyles = makeStyles(theme => ({
   root: {
     "& > *": {
@@ -21,7 +23,8 @@ function App() {
   // fetch data from api/express
   useEffect(() => {
     fetchItems();
-    fetchAPICall();
+    // fetchTest();
+    // fetchAPICall();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -36,17 +39,30 @@ function App() {
   };
 
   // EXPERIMENTAL API CALL****************************
-  const [experiment, setExperiment] = useState();
+  // const [test, fetchTest] = useState();
 
-  const fetchAPICall = async () => {
-    const response = await fetch("/express_backend");
-    const body = await response.json();
+  // const testingTesting = async () => {
+  //   const response = await fetch("https://api-v3.igdb.com/games", {
+  //     method: "POST",
+  //     header: {
+  //       "user-key": "1b0d8d553a89e5a44baf056a37b94793"
+  //     },
+  //     body: {
+  //       "fields name; limit 10;"
+  //     }
+  //   });
+  // };
+  // const [experiment, setExperiment] = useState();
 
-    if (response.status !== 200) {
-      throw Error(body.message);
-    }
-    setExperiment(body.express);
-  };
+  // const fetchAPICall = async () => {
+  //   const response = await fetch("/express_backend");
+  //   const body = await response.json();
+
+  //   if (response.status !== 200) {
+  //     throw Error(body.message);
+  //   }
+  //   setExperiment(body.express);
+  // };
 
   // ********************************************************
 
@@ -67,7 +83,7 @@ function App() {
             </li>
           ))}
         </ul>
-        <p>{experiment}</p>
+        {/* <p>{experiment}</p> */}
       </div>
     </div>
   );
