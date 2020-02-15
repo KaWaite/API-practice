@@ -23,6 +23,7 @@ function App() {
   // fetch data from api/express
   useEffect(() => {
     fetchItems();
+    fetchName();
     // fetchTest();
     // fetchAPICall();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,6 +37,26 @@ function App() {
     const Items = await data.json();
     setItems(Items);
     // console.log(Items);
+  };
+
+  // ***********TEST**********
+  const [Weather, setWeather] = useState({});
+  const [Coord, setCoord] = useState({});
+
+  const fetchName = async () => {
+    const data = await fetch("/openWeatherMap");
+    const blargh = await data.json();
+    console.log(blargh);
+
+    const data = await fetch(
+      "http://api.openweathermap.org/data/2.5/weather?q=Vancouver&appid=fd41f9c5f443147155fff01a2ba29766"
+    );
+    console.log(data);
+    const weatherData = await data.json();
+    const test = weatherData.coord;
+    setWeather(weatherData);
+    setCoord(test);
+    console.log(weatherData);
   };
 
   // EXPERIMENTAL API CALL****************************
@@ -76,6 +97,7 @@ function App() {
             Submit
           </Button>
         </form>
+        <h2>Items from app.get in server.js express</h2>
         <ul>
           {Items.map(item => (
             <li key={item.id}>
@@ -83,7 +105,13 @@ function App() {
             </li>
           ))}
         </ul>
-        {/* <p>{experiment}</p> */}
+        <h2>From external API(OWM)</h2>
+        <ul>
+          <li>{Weather.name}</li>
+          <li>
+            {Coord.lat} , {Coord.lon}
+          </li>
+        </ul>
       </div>
     </div>
   );
