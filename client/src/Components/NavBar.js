@@ -44,14 +44,17 @@ function a11yProps(index) {
 }
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper
+    flexGrow: 1
+  },
+  navBar: {
+    backgroundColor: "#b7d3d4"
   },
   menuButton: {
     marginRight: theme.spacing(2)
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+    color: "#383838"
   },
   link: {
     color: "white",
@@ -69,7 +72,7 @@ export default function NavTabs() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar className={classes.navBar} position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             Open Weather Map API
@@ -101,18 +104,9 @@ export default function NavTabs() {
               {...a11yProps(3)}
             />
           </Tabs>
-          <Button color="inherit">Login</Button>
+          <Button>Login</Button>
         </Toolbar>
       </AppBar>
-      {/* <TabPanel value={value} index={0}>
-        Page One
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Page Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Page Three
-      </TabPanel> */}
     </div>
   );
 }

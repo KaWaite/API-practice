@@ -7,10 +7,7 @@ import "./App.css";
 import Home from "./Components/Home";
 import About from "./Components/About";
 import Error404 from "./Components/Error404";
-
-// Material-ui components
-
-import NavBar from "./Components/MaterialUIComponents/NavBar";
+import NavBar from "./Components/NavBar";
 import SiteGoal from "./Components/SiteGoal";
 import ApiInfo from "./Components/ApiInfo";
 
@@ -20,13 +17,15 @@ function App() {
       <>
         <NavBar About={About} />
         <div className="App">
-          <Switch>
-            <Route exact path="/" render={() => <Home />} />
-            <Route path="/site-goal" render={() => <SiteGoal />} />
-            <Route path="/api-info" render={() => <ApiInfo />} />
-            <Route path="/about" render={() => <About />} />
-            <Route render={() => <Error404 />} />
-          </Switch>
+          <div className="Main">
+            <Switch>
+              <Route exact path="/" render={() => <Home />} />
+              <Route path="/site-goal" render={() => <SiteGoal />} />
+              <Route path="/api-info" render={() => <ApiInfo />} />
+              <Route path="/about" render={() => <About />} />
+              <Route render={() => <Error404 />} />
+            </Switch>
+          </div>
         </div>
       </>
     </Router>
