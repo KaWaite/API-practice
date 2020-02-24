@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // import ListComponent from "./ListComponent";
 import WeatherAPIComponent from "./WeatherAPIComponent";
@@ -41,13 +41,33 @@ const useStyles = makeStyles(theme => ({
 export default function Home() {
   const classes = useStyles();
 
+  const [City, setCity] = useState("");
+
+  const CitySearch = e => {
+    setCity(e.target.value);
+  };
+
+  const handleSubmit = evt => {
+    evt.preventDefault();
+  };
+
   return (
     <>
       <h1>API: React, Express, (eventually)MySQL(maybe)</h1>
       <div className={classes.middle}>
-        <form className={classes.root} noValidate autoComplete="off">
-          <TextField id="standard-size-small" size="small" label="enter city" />
-          <Button size="small" variant="outlined">
+        <form
+          className={classes.root}
+          noValidate
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
+          <TextField
+            id="citySearch"
+            size="small"
+            label="enter city"
+            onChange={CitySearch}
+          />
+          <Button size="small" variant="outlined" type="submit">
             Search
           </Button>
         </form>

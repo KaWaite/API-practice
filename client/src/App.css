@@ -11,3 +11,10 @@
   width: 80%;
   margin: auto;
 }
+.SubMainIcon {
+  float: left;
+  font-size: 150;
+}
+.SubMain {
+  margin-left: 180px;
+}

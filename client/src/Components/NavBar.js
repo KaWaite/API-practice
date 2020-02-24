@@ -11,7 +11,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -104,7 +104,7 @@ export default function NavTabs() {
               {...a11yProps(3)}
             />
           </Tabs>
-          <Button>Login</Button>
+          {/* <Button>Login</Button> */}
         </Toolbar>
       </AppBar>
     </div>
