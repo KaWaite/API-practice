@@ -75,7 +75,7 @@ export default function NavTabs() {
       <AppBar className={classes.navBar} position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            Open Weather Map API
+            O.W.M. API
           </Typography>
           <Tabs
             //   variant="fullWidth"

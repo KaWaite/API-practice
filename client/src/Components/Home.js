@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import WeatherAPIComponent from "./WeatherAPIComponent";
 
 // Material ui imports
+import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
@@ -40,20 +41,27 @@ const useStyles = makeStyles(theme => ({
 
 export default function Home() {
   const classes = useStyles();
+  let search = "";
 
-  const [City, setCity] = useState("");
+  const [City, setCity] = useState("Tokyo");
 
+  // Function for City Search Text Field
   const CitySearch = e => {
-    setCity(e.target.value);
+    search = e.target.value;
   };
+  // *********************************
 
+  // Function to handle when City Search is submitted
   const handleSubmit = evt => {
     evt.preventDefault();
+    setCity(search);
+    console.log(City);
   };
+  // *********************************
 
   return (
     <>
-      <h1>API: React, Express, (eventually)MySQL(maybe)</h1>
+      <Typography variant="h2">Open Weather Map App</Typography>
       <div className={classes.middle}>
         <form
           className={classes.root}
@@ -72,7 +80,11 @@ export default function Home() {
           </Button>
         </form>
         {/* <ListComponent classes={classes} title="Server.js express" /> */}
-        <WeatherAPIComponent classes={classes} title="Current Weather" />
+        <WeatherAPIComponent
+          classes={classes}
+          city={City}
+          title="Current Weather"
+        />
       </div>
     </>
   );

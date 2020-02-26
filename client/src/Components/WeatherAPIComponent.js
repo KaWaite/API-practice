@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 
+import Typography from "@material-ui/core/Typography";
+
 export default function WeatherAPIComponent(props) {
   // fetch data from api/express
   useEffect(() => {
     fetchWeatherData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [props]);
 
   // *********** OWM API call for current weather info**********
   const [City, setCity] = useState();
@@ -15,9 +17,10 @@ export default function WeatherAPIComponent(props) {
 
   const fetchWeatherData = async () => {
     const data = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=Tokyo&units=metric&appid=fd41f9c5f443147155fff01a2ba29766`
+      `http://api.openweathermap.org/data/2.5/weather?q=${props.city}&units=metric&appid=fd41f9c5f443147155fff01a2ba29766`
     );
     const items = await data.json();
+    console.log(items);
 
     const weather = items.weather[0];
     const weatherIcon =
@@ -32,11 +35,11 @@ export default function WeatherAPIComponent(props) {
 
   return (
     <div className={props.classes.weather}>
-      <h4>{props.title}</h4>
-      <h1>{City}</h1>
+      <Typography variant="subtitle2">{props.title}</Typography>
+      <Typography variant="h2">{City}</Typography>
       <img src={Icon} alt={Weather.description}></img>
-      <h4>{Temp.temp} Celsius</h4>
-      <h2>{Weather.description}</h2>
+      <Typography variant="h3">{Math.round(Temp.temp)}&deg;C</Typography>
+      <Typography variant="h5">{Weather.description}</Typography>
     </div>
   );
 }
