@@ -29,8 +29,7 @@ const useStyles = makeStyles(theme => ({
   weather: {
     padding: "20px",
     width: "300px",
-    background: "#c7ddde",
-    border: "0.1px solid grey"
+    background: "#c7dade"
   },
   list: {
     listStyleType: "none",
@@ -55,7 +54,6 @@ export default function Home() {
   const handleSubmit = evt => {
     evt.preventDefault();
     setCity(search);
-    console.log(City);
   };
   // *********************************
 

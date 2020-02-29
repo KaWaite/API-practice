@@ -12,7 +12,7 @@ export default function About(props) {
         <Typography variant="h2" component="h2" gutterBottom>
           About
         </Typography>
-        <Typography variante="body2" paragraphy>
+        <Typography variante="body2" paragraph>
           My name is Kyle Waite and I have been working over the past year and a
           half to build up my programming skills to be able to switch careers.
           {"</br>"} Though I haven't been able to devote as much time as I want
