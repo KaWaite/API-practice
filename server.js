@@ -2,26 +2,34 @@ const express = require("express");
 
 const app = express();
 
-app.get("/api/test", (req, res) => {
-  const treats = [
+app.use("/test", () => {
+  console.log("hit middleware!")
+})
+
+app.get("/API/pages", (req, res) => {
+  const pages = [
     {
       id: 1,
-      name: "Jellybeans"
+      title: "Jellybeans",
+      content: "dumby content"
     },
     {
       id: 2,
-      name: "Cookies"
+      title: "Cookies",
+      content: "dumby content"
     },
     {
       id: 4,
-      name: "Potato Chips"
+      title: "Potato Chips",
+      content: "dumby content"
     },
     {
       id: 5,
-      name: "Ice Cream"
+      title: "Ice Cream",
+      content: "dumby content"
     }
   ];
-  res.json(treats);
+  res.json(pages);
 });
 
 // Assign port

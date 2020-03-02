@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // import ListComponent from "./ListComponent";
 import WeatherAPIComponent from "./WeatherAPIComponent";
@@ -40,11 +40,56 @@ const useStyles = makeStyles(theme => ({
 
 export default function Home() {
   const classes = useStyles();
-  let search = "";
-
+  
+  // State
   const [City, setCity] = useState("Tokyo");
+  const [Weather, setWeather] = useState({});
+  const [Temp, setTemp] = useState({});
+  const [Icon, setIcon] = useState();
+  
+  // fetch data from api/express
+  useEffect(() => {
+    fetchWeatherData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [City]);
+  
+  // *********** OWM API call and state initialization for current weather info**********
+  const fetchWeatherData = async () => {
+    try {
+      const data = await fetch(
+        `http://api.openweathermap.org/data/2.5/weather?q=${City}&units=metric&appid=fd41f9c5f443147155fff01a2ba29766`
+      );
+      if (data.ok) {
+        const items = await data.json();
 
+        // prepare variables from API for state
+        const weather = items.weather[0];
+        const weatherIcon =
+          "http://openweathermap.org/img/wn/" + weather.icon + "@2x.png";
+        const temperature = items.main.temp;
+        // set state
+        setCity(items.name);
+        setWeather(weather);
+        setIcon(weatherIcon);
+        setTemp(temperature);
+      } else {
+        // error, city name not found in API 
+        alert(
+          "Sorry, that is not a real city. Please try again with a city on Earth."
+        );
+        console.log("failed... " + data.status);
+      }
+    } catch (e) {
+      // error catch, connection issue
+      alert(
+        "Gee Whiz. Looks like there's no network access. Please make sure you're online and try again!"
+      );
+    }
+  };
+  // ********************************************************
+  
   // Function for City Search Text Field
+  let search = "";
   const CitySearch = e => {
     search = e.target.value;
   };
@@ -80,8 +125,11 @@ export default function Home() {
         {/* <ListComponent classes={classes} title="Server.js express" /> */}
         <WeatherAPIComponent
           classes={classes}
-          city={City}
+          City={City}
           title="Current Weather"
+          Weather={Weather}
+          Temp={Temp}
+          Icon={Icon}
         />
       </div>
     </>
