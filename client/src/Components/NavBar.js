@@ -64,7 +64,19 @@ const useStyles = makeStyles(theme => ({
 
 export default function NavTabs() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const getInitialUrl = () => {
+    let url = window.location.href.split("/").pop();
+    if (url === "site-goal") {
+      return 1;
+    } else if (url === "api-info") {
+      return 2;
+    } else if (url === "about") {
+      return 3;
+    } else {
+      return 0;
+    }
+  };
+  const [value, setValue] = React.useState(getInitialUrl());
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

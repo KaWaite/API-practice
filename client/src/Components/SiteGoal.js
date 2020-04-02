@@ -1,12 +1,12 @@
 import React from "react";
 
 import Typography from "@material-ui/core/Typography";
-import ComputerTwoToneIcon from "@material-ui/icons/ComputerTwoTone";
+import ComputerIcon from "@material-ui/icons/Computer";
 
 export default function SiteGoal() {
   return (
     <div className="Main">
-      <ComputerTwoToneIcon style={{ float: "left", fontSize: "150" }} />
+      <ComputerIcon style={{ float: "left", fontSize: "150" }} />
       <div className="SubMain">
         <Typography variant="h2" component="h2" gutterBottom>
           Site Goal
