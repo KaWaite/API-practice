@@ -5,12 +5,12 @@ import WebIcon from "@material-ui/icons/Web";
 
 export default function ApiInfo() {
   return (
-    <div className="Main">
-      <WebIcon style={{ fontSize: 150, float: "left" }} />
-      <div className="SubMain">
-        <Typography variant="h2" component="h2" gutterBottom>
-          API Information
-        </Typography>
+    <div className="SubMain">
+      <WebIcon style={{ fontSize: 150 }} />
+      <Typography variant="h2" component="h2" gutterBottom>
+        API Information
+      </Typography>
+      <div className="content">
         <Typography variant="body2" gutterBottom>
           This app is using the very popular Open Weather Map API to fetch its
           data. Home is gathering the data for my locale(kind of) and then the

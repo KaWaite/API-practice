@@ -1,9 +1,6 @@
 // Core Imports
 import React, { useState, useEffect } from "react";
 
-// Material UI Imports
-import Typography from "@material-ui/core/Typography";
-
 // Component
 export default function WeatherAPIComponent(props) {
   // fetch data from api/express
@@ -49,12 +46,12 @@ export default function WeatherAPIComponent(props) {
   // ********************************************************
 
   return (
-    <div className={props.classes.weather}>
-      <Typography variant="subtitle2">{props.title}</Typography>
-      <Typography variant="h2">{City}</Typography>
+    <div className="weather">
+      <h5>{props.title}</h5>
+      <h2>{City}</h2>
       <img src={Icon} alt={Weather.description}></img>
-      <Typography variant="h3">{Math.round(Temp)}&deg;C</Typography>
-      <Typography variant="h5">{Weather.description}</Typography>
+      <h3>{Math.round(Temp)}&deg;C</h3>
+      <h5 className="weather-desc">{Weather.description}</h5>
     </div>
   );
 }

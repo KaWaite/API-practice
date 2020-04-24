@@ -5,7 +5,7 @@ import CloseIcon from "@material-ui/icons/Close";
 
 export default function Error404() {
   return (
-    <div className="Main">
+    <div className="SubMain">
       <CloseIcon style={{ fontSize: 80 }} />
       <Typography variant="h2" component="h2" gutterBottom>
         I'm terribly, terribly sorry. The page you are Looking for could not be

@@ -14,20 +14,18 @@ import ApiInfo from "./Components/ApiInfo";
 function App() {
   return (
     <Router>
-      <>
+      <div className="App">
         <NavBar About={About} />
-        <div className="App">
-          <div className="Main">
-            <Switch>
-              <Route exact path="/" render={() => <Home />} />
-              <Route path="/site-goal" render={() => <SiteGoal />} />
-              <Route path="/api-info" render={() => <ApiInfo />} />
-              <Route path="/about" render={() => <About />} />
-              <Route render={() => <Error404 />} />
-            </Switch>
-          </div>
+        <div className="Main">
+          <Switch>
+            <Route exact path="/" render={() => <Home />} />
+            <Route path="/site-goal" render={() => <SiteGoal />} />
+            <Route path="/api-info" render={() => <ApiInfo />} />
+            <Route path="/about" render={() => <About />} />
+            <Route render={() => <Error404 />} />
+          </Switch>
         </div>
-      </>
+      </div>
     </Router>
   );
 }

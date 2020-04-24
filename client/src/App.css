@@ -4,17 +4,76 @@
   width: 100vw;
   margin: auto;
   background: #eff5f6;
+  font-family: "Roboto", sans-serif;
 }
 .Main {
-  height: 100%;
-  padding-top: 40px;
-  width: 80%;
-  margin: auto;
-}
-.SubMainIcon {
-  float: left;
-  font-size: 150;
+  height: Calc(100vh - 119px);
+  /* padding-top: 104px; */
+  /* width: 100%; */
+  /* margin: 0 auto; */
+  position: relative;
+  margin-top: 55px;
 }
 .SubMain {
-  margin-left: 180px;
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  margin: 0;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  /* padding: 100px 0; */
+  width: 100%;
+}
+
+.SubMain h1 {
+  width: 97%;
+  font-weight: 300;
+  font-size: 3em;
+}
+
+.content {
+  width: 97%;
+  margin: 0 auto;
+  color: #6d7677;
+}
+
+.form {
+  width: 100%;
+}
+
+.form button {
+  margin: 2em;
+  background: #b2c5c7;
+}
+
+.weather {
+  padding: 15px;
+  /* max-height: 50vh; */
+  margin: 0.5em;
+  border-radius: 8px;
+  /* width: 100%; */
+  background: #d0dee0;
+  /* max-height: 30vh; */
+}
+
+.weather h2 {
+  font-size: 3em;
+}
+
+.weather img {
+  height: 25%;
+}
+
+.weather-desc {
+  display: none;
+}
+
+@media only screen and (min-width: 1023px) {
+  .Main {
+    height: Calc(100vh - 104px);
+    padding-top: 40px;
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+  }
 }

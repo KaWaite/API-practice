@@ -5,13 +5,13 @@ import DirectionsRunIcon from "@material-ui/icons/DirectionsRun";
 
 export default function About(props) {
   return (
-    <div className="Main">
-      <DirectionsRunIcon style={{ float: "left", fontSize: "150" }} />
+    <div className="SubMain">
+      <DirectionsRunIcon style={{ fontSize: "150" }} />
 
-      <div className="SubMain">
-        <Typography variant="h2" component="h2" gutterBottom>
-          About
-        </Typography>
+      <Typography variant="h2" component="h2" gutterBottom>
+        About
+      </Typography>
+      <div className="content">
         <Typography variante="body2" paragraph>
           My name is Kyle Waite and I have been working over the past year and a
           half to build up my programming skills to be able to switch careers.
