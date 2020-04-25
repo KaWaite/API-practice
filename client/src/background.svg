@@ -1,0 +1,13 @@
+<svg version="1.1"
+     baseProfile="full"
+     width="110" height="145"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <circle cx="55" cy="90" r="50" fill="#ffcc99" opacity=".5" />
+  <path d="M 20 80 q -20 30 10 15 T 20 70" stroke="#ccf5ff"
+  stroke-width=".5" fill="none" />
+  <path d="M 20 70 q 20 0 25 5 T 45 90 T 55 85 T 55 90 T 75 80" stroke="#ccf5ff"
+  stroke-width=".5" fill="none" />
+  <path d="M 70 100 q 20 -45 15 -15 T 95 75 L 95 105" stroke="#ccf5ff"
+  stroke-width=".5" fill="none" />
+</svg>

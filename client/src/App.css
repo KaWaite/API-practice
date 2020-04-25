@@ -4,6 +4,10 @@
   width: 100vw;
   margin: auto;
   background: #eff5f6;
+  background-image: url("./background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   font-family: "Roboto", sans-serif;
 }
 .Main {
@@ -68,6 +72,10 @@
   display: none;
 }
 
+.drawer {
+  background: #d0dee0;
+}
+
 @media only screen and (min-width: 1023px) {
   .Main {
     height: Calc(100vh - 104px);
@@ -75,5 +83,13 @@
     width: 80%;
     margin: 0 auto;
     position: relative;
+  }
+
+  .SubMain {
+    width: 70%;
+  }
+
+  .weather-desc {
+    display: contents;
   }
 }

@@ -1,75 +1,32 @@
 import React from "react";
-import PropTypes from "prop-types";
+import Tabs from "./NavTabs";
+import Drawer from "./Drawer";
 
-import { Link } from "react-router-dom";
-
-// Material UI imports
-import { fade, makeStyles } from "@material-ui/core/styles";
+// Material UI
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
-// import Button from "@material-ui/core/Button";
-import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
+
+import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
-import IconButton from "@material-ui/core/IconButton";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <Typography
-      component="div"
-      role="tabpanel"
-      hidden={value !== index}
-      id={`nav-tabpanel-${index}`}
-      aria-labelledby={`nav-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box p={3}>{children}</Box>}
-    </Typography>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `nav-tab-${index}`,
-    "aria-controls": `nav-tabpanel-${index}`,
-  };
-}
-
-// styles
 const useStyles = makeStyles((theme) => ({
-  root: {
+  grow: {
     flexGrow: 1,
-  },
-  navBar: {
-    backgroundColor: "#d0dee0",
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   title: {
-    marginRight: theme.spacing(2),
-    color: "#383838",
+    display: "none",
+    [theme.breakpoints.up("sm")]: {
+      display: "block",
+    },
   },
-  link: {
-    color: "white",
-    textDecoration: "none",
+  nav: {
+    background: "#d0dee0",
+    color: "black",
   },
   inputRoot: {
     color: "inherit",
@@ -88,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
     display: "none",
     [theme.breakpoints.up("md")]: {
       display: "flex",
+      justifyContent: "center",
     },
   },
   sectionMobile: {
@@ -98,28 +56,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// NavBar exporting component
-export default function NavTabs() {
+export default function PrimarySearchAppBar() {
   const classes = useStyles();
-  const getInitialUrl = () => {
-    let url = window.location.href.split("/").pop();
-    if (url === "site-goal") {
-      return 1;
-    } else if (url === "api-info") {
-      return 2;
-    } else if (url === "about") {
-      return 3;
-    } else {
-      return 0;
-    }
-  };
-  const [value, setValue] = React.useState(getInitialUrl());
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  // MENU STUFF
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -145,126 +83,32 @@ export default function NavTabs() {
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
+    <Menu>
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
 
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
-
   return (
     <div className={classes.grow}>
-      <AppBar className={classes.navBar} position="static">
+      <AppBar position="static" className={classes.nav}>
         <Toolbar>
-          <Typography variant="h6" className={classes.title} edge="start">
-            O.W.M. API
+          <Typography className={classes.title} variant="h6" noWrap>
+            OWM App
           </Typography>
-
-          {/* <Button>Login</Button> */}
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Tabs
-              //   variant="fullWidth"
-              value={value}
-              onChange={handleChange}
-              className={classes.title}
-              aria-label="nav tabs"
-            >
-              <Tab label="Home" component={Link} to="/" {...a11yProps(0)} />
-              <Tab
-                label="Site Goal"
-                component={Link}
-                to="/site-goal"
-                {...a11yProps(1)}
-              />
-              <Tab
-                label="API"
-                component={Link}
-                to={"/api-info"}
-                {...a11yProps(2)}
-              />
-              <Tab
-                label="About"
-                component={Link}
-                to={"/about"}
-                {...a11yProps(3)}
-              />
-            </Tabs>
+            <Tabs />
           </div>
+          <div className={classes.grow} />
           <div className={classes.sectionMobile}>
-            {/* <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton> */}
-            <IconButton
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              className={classes.menuButton}
-              color="black"
-              aria-label="open drawer"
-            >
-              <MenuIcon />
-            </IconButton>
+            <Drawer />
           </div>
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
+      {/* {renderMobileMenu} */}
+      {/* {renderMenu} */}
     </div>
   );
 }
