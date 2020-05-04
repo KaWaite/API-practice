@@ -19,9 +19,9 @@ function App() {
         <div className="Main">
           <Switch>
             <Route exact path="/" render={() => <Home />} />
-            <Route path="/site-goal" render={() => <SiteGoal />} />
-            <Route path="/api-info" render={() => <ApiInfo />} />
-            <Route path="/about" render={() => <About />} />
+            {/* <Route path="/site-goal" render={() => <SiteGoal />} /> */}
+            {/* <Route path="/api-info" render={() => <ApiInfo />} /> */}
+            {/* <Route path="/about" render={() => <About />} /> */}
             <Route render={() => <Error404 />} />
           </Switch>
         </div>

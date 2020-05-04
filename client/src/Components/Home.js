@@ -28,6 +28,7 @@ export default function Home() {
   return (
     <div className="SubMain">
       <h1>Open Weather Map App</h1>
+      <WeatherAPIComponent city={City} title="Current Weather" />
       <form
         className="form"
         noValidate
@@ -44,8 +45,6 @@ export default function Home() {
           Search
         </Button>
       </form>
-      {/* <ListComponent classes={classes} title="Server.js express" /> */}
-      <WeatherAPIComponent city={City} title="Current Weather" />
     </div>
   );
 }

@@ -1,48 +1,35 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
   height: 100vh;
   width: 100vw;
-  margin: auto;
   background: #eff5f6;
-  background-image: url("./background.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   font-family: "Roboto", sans-serif;
+  background-image: url("./background.svg");
 }
-.Main {
-  height: Calc(100vh - 119px);
-  /* padding-top: 104px; */
-  /* width: 100%; */
-  /* margin: 0 auto; */
-  position: relative;
-  margin-top: 55px;
-}
+
 .SubMain {
-  position: absolute;
-  top: 43%;
-  left: 50%;
-  margin: 0;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  /* padding: 100px 0; */
-  width: 100%;
+  position: relative;
 }
 
 .SubMain h1 {
-  width: 97%;
+  width: 60%;
+  margin-left: 10px;
   font-weight: 300;
   font-size: 3em;
+  padding: 15px;
+  border-top: 1px solid black;
+  border-bottom: 2px solid black;
+  border-radius: 18px;
 }
-
-.content {
-  width: 97%;
-  margin: 0 auto;
-  color: #6d7677;
-}
-
 .form {
-  width: 100%;
+  text-align: center;
+  width: 70%;
+  margin: 10px auto;
+  border-top: 0.5px solid lightgrey;
+  border-bottom: 0.5px solid lightgrey;
+  border-radius: 18px;
+  padding: 15px;
+  background: #d0dee0;
 }
 
 .form button {
@@ -51,17 +38,16 @@
 }
 
 .weather {
-  padding: 15px;
-  /* max-height: 50vh; */
-  margin: 0.5em;
-  border-radius: 8px;
-  /* width: 100%; */
+  text-align: center;
+  margin: 0 auto;
+  width: 95%;
+  border-radius: 18px;
   background: #d0dee0;
-  /* max-height: 30vh; */
+  padding: 24px 0;
 }
 
 .weather h2 {
-  font-size: 3em;
+  font-size: 2em;
 }
 
 .weather img {
@@ -76,7 +62,13 @@
   background: #d0dee0;
 }
 
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 700px) {
+  .App {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
   .Main {
     height: Calc(100vh - 104px);
     padding-top: 40px;
@@ -85,11 +77,56 @@
     position: relative;
   }
 
-  .SubMain {
-    width: 70%;
+  .SubMain h1 {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .weather {
+    width: 55%;
+    float: right;
   }
 
   .weather-desc {
     display: contents;
+  }
+
+  .form {
+    width: 35%;
+    float: left;
+    border: none;
+    margin-top: 110px;
+    background: none;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .App {
+    background-image: none;
+  }
+  .Main {
+    max-width: 65%;
+    background-image: url("./background.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .SubMain h1 {
+    width: 450px;
+    float: left;
+    border: none;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .Main {
+    margin-top: 100px;
+  }
+  .weather {
+    height: 300px;
+    width: 400px;
+    margin-top: 65px;
   }
 }
