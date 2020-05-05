@@ -119,21 +119,20 @@
     background-size: cover;
     background-position: center;
   }
-
-  .SubMain h1 {
-    width: 450px;
-    float: left;
-    border: none;
-  }
 }
 
-@media only screen and (min-width: 1300px) {
-  .Main {
+@media only screen and (min-width: 1360px) {
+  .SubMain {
     margin-top: 100px;
   }
   .weather {
     height: 300px;
     width: 400px;
     margin-top: 65px;
+  }
+  .SubMain h1 {
+    width: 450px;
+    float: left;
+    border: none;
   }
 }
