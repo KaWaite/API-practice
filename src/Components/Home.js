@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // import ListComponent from "./ListComponent";
 import WeatherAPIComponent from "./WeatherAPIComponent";
@@ -8,20 +8,25 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
 export default function Home() {
-  let search = "";
+  // let search = "";
 
   const [City, setCity] = useState("Tokyo");
+  const [Search, setSearch] = useState("");
+
+  useEffect(() => {
+    setSearch("");
+  }, [City]);
 
   // Function for City Search Text Field
   const CitySearch = (e) => {
-    search = e.target.value;
+    setSearch(e.target.value);
   };
   // *********************************
 
   // Function to handle when City Search is submitted
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    setCity(search);
+    setCity(Search);
   };
   // *********************************
 
@@ -39,6 +44,7 @@ export default function Home() {
           id="citySearch"
           size="small"
           label="enter city"
+          value={Search}
           onChange={CitySearch}
         />
         <Button size="small" variant="outlined" type="submit">
