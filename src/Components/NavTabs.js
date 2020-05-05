@@ -93,13 +93,13 @@ export default function NavTabs() {
         aria-label="nav tabs"
       >
         <Tab label="Home" component={Link} to="/" {...a11yProps(0)} />
+        <Tab label="API" component={Link} to={"/api-info"} {...a11yProps(2)} />
         <Tab
           label="Site Goal"
           component={Link}
           to="/site-goal"
           {...a11yProps(1)}
         />
-        <Tab label="API" component={Link} to={"/api-info"} {...a11yProps(2)} />
         <Tab label="About" component={Link} to={"/about"} {...a11yProps(3)} />
       </Tabs>
     </>

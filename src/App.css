@@ -7,6 +7,13 @@
   background-image: url("./background.svg");
 }
 
+.Main-alt {
+  text-align: center;
+  position: relative;
+  margin: 50px auto;
+  max-width: 90%;
+}
+
 .SubMain {
   position: relative;
 }

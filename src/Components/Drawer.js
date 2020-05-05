@@ -97,7 +97,7 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List className="drawer">
-        {["Home", "Site Goal", "API", "About"].map((text, index) =>
+        {["Home", "API", "Site Goal", "About"].map((text, index) =>
           getRoutes(text)
         )}
       </List>
