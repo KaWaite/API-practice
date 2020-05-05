@@ -18,14 +18,14 @@ export default function WeatherAPIComponent(props) {
   const fetchWeatherData = async () => {
     try {
       const data = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?q=${props.city}&units=metric&appid=fd41f9c5f443147155fff01a2ba29766`
+        `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&units=metric&appid=fd41f9c5f443147155fff01a2ba29766`
       );
       if (data.ok) {
         const items = await data.json();
 
         const weather = items.weather[0];
         const weatherIcon =
-          "http://openweathermap.org/img/wn/" + weather.icon + "@2x.png";
+          "https://openweathermap.org/img/wn/" + weather.icon + "@2x.png";
         const temperature = items.main.temp;
         setCity(items.name);
         setWeather(weather);
